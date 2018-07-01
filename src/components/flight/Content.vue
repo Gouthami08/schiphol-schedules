@@ -1,6 +1,6 @@
 <template>
-    <div class="schiphol-content-style">
-        <el-row><schiphol-filter/></el-row>
+    <div class="schiphol-content">
+        <el-row class="schiphol-filter"><schiphol-filter/></el-row>
         <el-row><schiphol-flight-table/></el-row>
     </div>
 </template>
@@ -34,9 +34,14 @@ export default {
 </script>
 
 
-<style>
-.schiphol-content-style {
+<style scoped>
+.schiphol-content {
   border-radius: 1px;
   background-color: rgb(243, 243, 183);
+}
+.schiphol-filter {
+  background-color: #FFC700;
+  color: white;
+  margin: 0px
 }
 </style>

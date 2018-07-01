@@ -26,8 +26,10 @@ export default {
 </script>
 
 <style>
-body {
+body, html {
   background-color: #b8bdc2;
+  margin: 0px;
+  padding: 0px;
 }
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
@@ -35,5 +37,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  border-radius: 5px !important;
 }
 </style>

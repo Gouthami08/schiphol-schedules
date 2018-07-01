@@ -45,8 +45,11 @@ export default {
   color: azure;
   height: 30px;
   line-height: 30px;
+  text-decoration-style: solid;
+  font-style: italic;
+  font-family: "Magra";
 }
-.i:hover{
-    background-color: aqua;
+i:hover{
+    background-color: rgb(182, 184, 184);
 }
 </style>
