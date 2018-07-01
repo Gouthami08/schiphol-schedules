@@ -1,7 +1,8 @@
 <template>
     <div>
     <h4>{{ tableTitle }} </h4>
-    <el-table class="schiphol-flight-table" stripe border
+    <el-col class="schiphol-flight-table" :span="24"> 
+    <el-table stripe border
       :data="formattedFlightsData" highlight-current-row :max-height="tableMaxHeight">
         <el-table-column prop="scheduleTime" label="Scheduled Time" align="center" sortable>
         </el-table-column>
@@ -16,6 +17,7 @@
         <el-table-column prop="baggageClaimBelts" label="Baggage Belts" align="center" sortable>
         </el-table-column>
     </el-table>
+    </el-col>
     </div>
 </template>
 
@@ -26,7 +28,7 @@ import moment from "moment";
 export default {
   data() {
     return {
-      tableTitle: "Schiphol Flights Schedules",
+      tableTitle: "Flights Schedules",
       results: []
     };
   },
@@ -34,7 +36,7 @@ export default {
   computed: {
     ...mapGetters(["filteredFlights"]),
     tableMaxHeight() {
-      return window.innerHeight - 245;
+      return window.innerHeight - 225;
     },
     formattedFlightsData() {
       let formattedFlightData = [];
@@ -123,5 +125,8 @@ export default {
 <style scoped>
 .schiphol-flight-table {
   padding: 10px;
+}
+h4 {
+  margin: 5px;
 }
 </style>

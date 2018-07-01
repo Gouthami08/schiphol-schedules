@@ -37,10 +37,10 @@ export default {
 <style scoped>
 .schiphol-content {
   border-radius: 1px;
-  background-color: rgb(243, 243, 183);
+  background-color: #FFC700
 }
 .schiphol-filter {
-  background-color: #FFC700;
+  background-color: #000000;
   color: white;
   margin: 0px
 }

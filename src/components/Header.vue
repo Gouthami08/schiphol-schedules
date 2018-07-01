@@ -21,8 +21,8 @@ export default {
 }
 .schiphol-header {
   border-radius: 1px;
-  background-color: rgb(111, 109, 216);
-  color: azure;
+  background-color: #003082;
+  color: white;
   height: 75px;
   line-height: 75px;
   margin: 0px;
