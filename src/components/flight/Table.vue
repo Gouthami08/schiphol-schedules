@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import moment from "moment";
+import { mapGetters } from "vuex"
+import moment from "moment"
 
 export default {
   name: "SchipholFlightTable",
@@ -31,86 +31,86 @@ export default {
     return {
       tableTitle: "Flights Schedules",
       results: []
-    };
+    }
   },
 
   computed: {
     ...mapGetters(["filteredFlights"]),
     tableMaxHeight() {
-      return window.innerHeight - 225;
+      return window.innerHeight - 225
     },
     formattedFlightsData() {
-      let formattedFlightData = [];
+      let formattedFlightData = []
       for (let flight of this.filteredFlights) {
-        let arrivingFrom = "";
-        let baggageClaimBelts = "";
-        let status = "";
+        let arrivingFrom = ""
+        let baggageClaimBelts = ""
+        let status = ""
         if (flight.baggageClaim) {
           for (let baggage of flight.baggageClaim.belts) {
-            baggageClaimBelts += baggage + " ";
+            baggageClaimBelts += baggage + " "
           }
         } else {
           baggageClaimBelts = "-"
         }
 
         for (let route of flight.route.destinations) {
-          arrivingFrom += route + " ";
+          arrivingFrom += route + " "
         }
 
-        let scheduled = moment(flight.scheduleDate + "T" + flight.scheduleTime);
-        let actual = moment(flight.actualLandingTime);
-        let estimated = moment(flight.estimatedLandingTime);
-        let currentTime = new Date();
+        let scheduled = moment(flight.scheduleDate + "T" + flight.scheduleTime)
+        let actual = moment(flight.actualLandingTime)
+        let estimated = moment(flight.estimatedLandingTime)
+        let currentTime = new Date()
 
         let actualMinusScheduled = Math.round(
           (actual.toDate().getTime() - scheduled.toDate().getTime()) / 60000
-        );
+        )
         let estimatedMinusCurrent = Math.round(
           (estimated.toDate().getTime() - currentTime.getTime()) / 60000
-        );
+        )
 
         if (flight.publicFlightState.flightStates.includes("ARR")) {
-          status = "Arrived";
+          status = "Arrived"
           //if(flight.publicFlightState.flightStates.includes("EXP")) {
           status += ` ${moment(actual).format("HH:mm")} (${
             actualMinusScheduled > 0
               ? "+" + actualMinusScheduled
               : actualMinusScheduled
-          })`;
+          })`
           //}
         } else if (flight.publicFlightState.flightStates.includes("LND")) {
-          status = "Landed";
+          status = "Landed"
           //if(flight.publicFlightState.flightStates.includes("EXP")) {
           status += ` ${moment(actual).format("HH:mm")} (${
             actualMinusScheduled > 0
               ? "+" + actualMinusScheduled
               : actualMinusScheduled
-          })`;
+          })`
           //}
         } else if (flight.publicFlightState.flightStates.includes("AIR")) {
-          status = "En Route";
+          status = "En Route"
           status += ` ${moment(estimated).format("HH:mm")} (${
             estimatedMinusCurrent > 0
               ? "+" + estimatedMinusCurrent
               : estimatedMinusCurrent
-          })`;
+          })`
         } else if (flight.publicFlightState.flightStates.includes("FIB")) {
-          status = "First Baggage";
-           status += ` ${moment(actual).format("HH:mm")} (${
+          status = "First Baggage"
+          status += ` ${moment(actual).format("HH:mm")} (${
             actualMinusScheduled > 0
               ? "+" + actualMinusScheduled
               : actualMinusScheduled
-          })`;
+          })`
         } else if (flight.publicFlightState.flightStates.includes("SCH")) {
-          status = "Scheduled";
+          status = "Scheduled"
         } else if (flight.publicFlightState.flightStates.includes("CNX")) {
-          status = "Cancelled";
+          status = "Cancelled"
         } else if (flight.publicFlightState.flightStates.includes("DIV")) {
-          status = "Deiverted";
+          status = "Deiverted"
         } else if (flight.publicFlightState.flightStates.includes("TOM")) {
-          status = "Tomorrow";
+          status = "Tomorrow"
         } else if (flight.publicFlightState.flightStates.includes("FIR")) {
-          status = "Ducth Airspace";
+          status = "Ducth Airspace"
         } else {
           status = flight.publicFlightState.flightStates
         }
@@ -120,14 +120,14 @@ export default {
           flightName: flight.flightName,
           arrivingFrom: arrivingFrom.trim(),
           status: status,
-          terminal: flight.terminal? flight.terminal: "-",
+          terminal: flight.terminal ? flight.terminal : "-",
           baggageClaimBelts: baggageClaimBelts.trim()
-        });
+        })
       }
-      return formattedFlightData;
+      return formattedFlightData
     }
   }
-};
+}
 </script>
 
 <style scoped>

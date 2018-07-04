@@ -6,23 +6,23 @@
 </template>
 
 <script>
-import SchipholFlightFilter from "./flight/Filter.vue";
-import SchipholFlightTable from "./flight/Table.vue";
-import { mapActions } from "vuex";
+import SchipholFlightFilter from "./flight/Filter.vue"
+import SchipholFlightTable from "./flight/Table.vue"
+import { mapActions } from "vuex"
 
 export default {
   name: "SchipholFlight",
   data() {
     return {
       interval: null
-    };
+    }
   },
   components: {
     SchipholFlightTable,
     SchipholFlightFilter
   },
   methods: {
-    ...mapActions(["callSchipholAPI"]),
+    ...mapActions(["callSchipholAPI"])
   },
   mounted() {
     let vm = this
@@ -32,9 +32,9 @@ export default {
     }, 600000) */
   },
   beforeDestroy() {
-   // clearInterval(this.interval)
+    // clearInterval(this.interval)
   }
-};
+}
 </script>
 
 

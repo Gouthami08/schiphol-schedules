@@ -32,7 +32,6 @@ export const store = new Vuex.Store({
     updatedTime: state => {
       return state.updatedTime
     }
-
   },
   mutations: {
     setFlights(state, payload) {
@@ -47,7 +46,7 @@ export const store = new Vuex.Store({
   },
   actions: {
     async callSchipholAPI({ commit }) {
-      let currentTime = new Date((new Date()).getTime() - 1800000);
+      let currentTime = new Date(new Date().getTime() - 1800000)
       let response = []
 
       // first call to API
@@ -58,14 +57,21 @@ export const store = new Vuex.Store({
       response = response.concat(result.data.flights)
 
       // Getting total number of pages from header - start
-      let link = ((result.headers.link.split(';')[0]).replace("<", "")).replace(">", "")
+      let link = result.headers.link
+        .split(";")[0]
+        .replace("<", "")
+        .replace(">", "")
       var regex = new RegExp("[?&]page(=([^&#]*)|&|#|$)"),
-      results = regex.exec(link)
-      let noOfPages = decodeURIComponent(results[2].replace(/\+/g, " "));
+        results = regex.exec(link)
+      let noOfPages = decodeURIComponent(results[2].replace(/\+/g, " "))
       // Getting total number of pages from header - end
 
       // getting more pages - max 10 or total number of pages(whichever is lesser)
-      for (let pageCount = 0; pageCount < 10 && pageCount <= noOfPages; pageCount++) {
+      for (
+        let pageCount = 0;
+        pageCount < 10 && pageCount <= noOfPages;
+        pageCount++
+      ) {
         let url = `${baseURL}&scheduledate=${currentTime.getFullYear()}-${currentTime.getMonth()}-${currentTime.getDate()}&scheduletime=${currentTime.getHours()}%3A${currentTime.getMinutes()}&page=${pageCount}`
         result = await axios.get(url, {
           headers: { ResourceVersion: "v3" }

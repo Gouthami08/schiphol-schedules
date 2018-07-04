@@ -26,7 +26,8 @@ export default {
 </script>
 
 <style>
-body, html {
+body,
+html {
   background-color: #b8bdc2;
   margin: 0px;
   padding: 0px;

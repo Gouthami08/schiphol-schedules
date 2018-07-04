@@ -50,7 +50,7 @@ export default {
   font-style: italic;
   font-family: "Magra";
 }
-i:hover{
-    background-color: rgb(182, 184, 184);
+i:hover {
+  background-color: rgb(182, 184, 184);
 }
 </style>

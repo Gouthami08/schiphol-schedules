@@ -18,7 +18,7 @@ export default {
 
 <style scoped>
 .el-col {
-    text-align: left;
+  text-align: left;
 }
 .schiphol-header {
   border-radius: 1px;
@@ -33,7 +33,7 @@ export default {
   margin: 0px;
 }
 .schiphol-header .schiphol-logo {
-    padding: 5px 0px 5px 15px;
-    width: 60px
+  padding: 5px 0px 5px 15px;
+  width: 60px;
 }
 </style>

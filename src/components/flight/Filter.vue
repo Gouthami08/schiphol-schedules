@@ -31,19 +31,19 @@ export default {
   data() {
     return {
       timeRange: ""
-    };
+    }
   },
   computed: {
     filter: {
       get() {
-        return this.$store.getters.filter;
+        return this.$store.getters.filter
       },
       set(filter) {
-        this.$store.commit("setFilter", filter);
+        this.$store.commit("setFilter", filter)
       }
     }
   }
-};
+}
 </script>
 
 <style scoped>
