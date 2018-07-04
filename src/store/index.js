@@ -68,7 +68,7 @@ export const store = new Vuex.Store({
 
       // getting more pages - max 10 or total number of pages(whichever is lesser)
       for (
-        let pageCount = 0;
+        let pageCount = 1;
         pageCount < 10 && pageCount <= noOfPages;
         pageCount++
       ) {
