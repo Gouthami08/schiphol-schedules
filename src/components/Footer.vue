@@ -14,6 +14,7 @@ import { mapActions } from "vuex"
 import moment from "moment"
 
 export default {
+  name: "SchipholFooter",
   data() {
     return {
       currentTime: ""

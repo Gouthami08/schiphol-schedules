@@ -3,7 +3,7 @@
     <el-row>
       <el-col :offset="1" :span="22">
         <el-row><schiphol-header/></el-row>
-        <el-row><schiphol-content/></el-row>
+        <el-row><schiphol-flight/></el-row>
         <el-row><schiphol-footer/></el-row>  
       </el-col>
     </el-row>
@@ -13,13 +13,13 @@
 <script>
 import SchipholHeader from "./components/Header.vue"
 import SchipholFooter from "./components/Footer.vue"
-import SchipholContent from "./components/flight/Content.vue"
+import SchipholFlight from "./components/Flight.vue"
 
 export default {
   name: "schiphol-app",
   components: {
     SchipholHeader,
-    SchipholContent,
+    SchipholFlight,
     SchipholFooter
   }
 }

@@ -26,6 +26,7 @@ import { mapGetters } from "vuex";
 import moment from "moment";
 
 export default {
+  name: "SchipholFlightTable",
   data() {
     return {
       tableTitle: "Flights Schedules",
@@ -56,7 +57,6 @@ export default {
           arrivingFrom += route + " ";
         }
 
-        // timecalcuations - start
         let scheduled = moment(flight.scheduleDate + "T" + flight.scheduleTime);
         let actual = moment(flight.actualLandingTime);
         let estimated = moment(flight.estimatedLandingTime);
@@ -103,6 +103,14 @@ export default {
           })`;
         } else if (flight.publicFlightState.flightStates.includes("SCH")) {
           status = "Scheduled";
+        } else if (flight.publicFlightState.flightStates.includes("CNX")) {
+          status = "Cancelled";
+        } else if (flight.publicFlightState.flightStates.includes("DIV")) {
+          status = "Deiverted";
+        } else if (flight.publicFlightState.flightStates.includes("TOM")) {
+          status = "Tomorrow";
+        } else if (flight.publicFlightState.flightStates.includes("FIR")) {
+          status = "Ducth Airspace";
         } else {
           status = flight.publicFlightState.flightStates
         }

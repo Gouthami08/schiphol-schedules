@@ -7,6 +7,7 @@
 
 <script>
 export default {
+  name: "SchipholHeader",
   data() {
     return {
       title: "SCHIPHOL AIRPORT"
